@@ -14,7 +14,7 @@ try {
   console.log("Number of recursive calls before overflow:", counter);
 }
 
-//Output was 12564 recursive calls before overflow.
+//Output was 12557 recursive calls before overflow.
 
 
 
@@ -42,6 +42,33 @@ function flattenArray(arr) {
     return result;
   }
 
-// setTimeout
+  function trampoline(func) {
+    while (typeof func === 'function') {
+      func = func();
+    }
+    return func;
+  }
+  
+  function flatHelper(arr, result = []) {
+    return function () {
+      if (arr.length === 0) return result;
+  
+      let [first, ...rest] = arr;
+      if (Array.isArray(first)) {
+        return flatHelper([...first, ...rest], result);
+      } else {
+        result.push(first);
+        return flatHelper(rest, result);
+      }
+    };
+  }
+  
+  function trampolineFlatten(arr) {
+    return trampoline(flatHelper(arr));
+  }
+  
+  const nested = [1, [2, [3, [4, 5]], 6], 7];
+  console.log(trampolineFlatten(nested));
 
-//Output was 12564 recursive calls before overflow.
+//Output  length 7 
+

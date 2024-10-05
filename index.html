@@ -8,5 +8,26 @@
 </head>
 <body>
     <h1> Practical Use of the Event Loop </h1>
+
+
+    <!-- Create a simple HTML element to hold text. Cache this HTML element into a JavaScript variable. -->
+<!-- Write a function that takes a parameter n and adds a list of all prime numbers between one and n to your HTML element. -->
+<!-- Once complete, use the alert() method to alert the user that the calculation is finished. -->
+
+
+<div id="output"></div>
+<script>
+    let outputDiv = document.getElementById('output');
+
+    function isPrime(num) {
+        if (num < 2) return false;
+        for (let j = 2; j <= Math.sqrt(num); j++) {
+            if (num % j === 0) return false;
+        }
+        return true;
+    }
+
+
+
 </body>
 </html>
