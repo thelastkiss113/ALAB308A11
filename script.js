@@ -15,38 +15,25 @@ try {
 
 //Output was 12564 recursive calls before overflow.
 
+
+// Part One: 
+// const factorial = (n) => {
+//     if(n === 0) return 1;
+//     return n * factorial(n-1);
+// };
+
+
 //PART TWO : TRAMPOLINES - make recursive call into iterative loop
 //write a recursive function to flatten deeply nested array
 //convert to trampoline function to avoid stack overflow.
 
 //flatten
 
-function flatten(arr) {
-  return arr.reduce(
-    (flat, toFlatten) =>
-      flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten),
-    []
-  );
-}
+const factor = (n, a = 1) => {
 
+}
 //convert trampoline function
 
-function flattenArrayTrampoline(arr, result = []) {
-    if (arr.length === 0) return result;  
-  
-    const [first, ...rest] = arr; 
-  
-    if (Array.isArray(first)) {
-  
-      return () => flattenArrayTrampoline(first.concat(rest), result);
-    } else {
-      result.push(first); 
-      return () => flattenArrayTrampoline(rest, result);  
-    }
-  }
-
-
-//Output was 125777 recursive calls before overflow.
-
-
 // setTimeout
+
+//Output was 12564 recursive calls before overflow.
