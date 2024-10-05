@@ -1,4 +1,5 @@
-// pseudo code
+//Part 1:
+
 let counter = 0; // Global counter to count function calls
 
 function recursiveCall() {
@@ -16,12 +17,6 @@ try {
 //Output was 12564 recursive calls before overflow.
 
 
-// Part One: 
-// const factorial = (n) => {
-//     if(n === 0) return 1;
-//     return n * factorial(n-1);
-// };
-
 
 //PART TWO : TRAMPOLINES - make recursive call into iterative loop
 //write a recursive function to flatten deeply nested array
@@ -29,10 +24,23 @@ try {
 
 //flatten
 
-const factor = (n, a = 1) => {
+// const facto = (n, a = 1) => {
+//     if (n === 0) return a;
+//     return () => facto(n - 1, n * a);
+//   }
+ 
 
-}
-//convert trampoline function
+function flattenArray(arr) {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) {
+        result = result.concat(flattenArray(arr[i]));
+      } else {
+        result.push(arr[i]);
+      }
+    }
+    return result;
+  }
 
 // setTimeout
 
