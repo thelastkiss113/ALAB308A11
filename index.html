@@ -16,6 +16,7 @@
 
 
 <div id="output"></div>
+< <div id="output"></div>
 <script>
     let outputDiv = document.getElementById('output');
 
@@ -27,6 +28,32 @@
         return true;
     }
 
+    function showPrimes(limit) {
+        let current = 1;
+
+
+        // alert box 
+        function findPrimes() {
+            if (current > limit) {
+                alert("Finished calculating prime numbers");
+                return;
+            }
+
+            if (isPrime(current)) {
+                let paragraph = document.createElement('p');
+                paragraph.textContent = current;
+                outputDiv.appendChild(paragraph);
+            }
+
+            current++;
+            setTimeout(findPrimes, 0);
+        }
+
+        findPrimes();
+    }
+
+    showPrimes(10000);
+</script>
 
 
 </body>
